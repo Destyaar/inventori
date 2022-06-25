@@ -10,18 +10,20 @@
 		<?php $this->load->view('partials/sidebar.php') ?>
 
 		<div id="content-wrapper" class="d-flex flex-column">
-			<div id="content" data-url="<?= base_url('penerimaan') ?>">
+			<div id="content" data-url="<?= base_url('barang') ?>">
 				<!-- load Topbar -->
 				<?php $this->load->view('partials/topbar.php') ?>
 
-				<div class="container-fluid">
+				<div class="container-fluid"> 
 				<div class="clearfix">
 					<div class="float-left">
 						<h1 class="h3 m-0 text-gray-800"><?= $title ?></h1>
 					</div>
 					<div class="float-right">
-						
-						<a href="<?= base_url('penerimaan/tambah') ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;&nbsp;Tambah</a>
+						<?php if ($this->session->login['role'] == 'admin'): ?>
+							
+							<a href="<?= base_url('barang/tambah') ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i>&nbsp;&nbsp;Tambah</a>
+						<?php endif ?>
 					</div>
 				</div>
 				<hr>
@@ -41,32 +43,34 @@
 					</div>
 				<?php endif ?>
 				<div class="card shadow">
-					<div class="card-header"><strong>Daftar Penerimaan</strong></div>
+					<div class="card-header"><strong>Daftar Barang</strong></div>
 					<div class="card-body">
 						<div class="table-responsive">
 							<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 								<thead>
 									<tr>
 										<td>No</td>
-										<td>No Terima</td>
-										<td>Nama Petugas</td>
-										<td>Nama Supplier</td>
-										<td>Tanggal Terima</td>
-										<td>Aksi</td>
+										<td>Kode Barang</td>
+										<td>Nama Barang</td>
+										<td>Stok</td>
+										<?php if ($this->session->login['role'] == 'admin'): ?>
+											<td>Aksi</td>
+										<?php endif ?>
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($all_penerimaan as $penerimaan): ?>
+									<?php foreach ($all_barang as $barang): ?>
 										<tr>
 											<td><?= $no++ ?></td>
-											<td><?= $penerimaan->no_terima ?></td>
-											<td><?= $penerimaan->nama_petugas ?></td>
-											<td><?= $penerimaan->nama_supplier ?></td>
-											<td><?= $penerimaan->tgl_terima ?> <?= $penerimaan->jam_terima ?></td>
-											<td>
-												<a href="<?= base_url('penerimaan/detail/' . $penerimaan->no_terima) ?>" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
-												<a onclick="return confirm('apakah anda yakin?')" href="<?= base_url('penerimaan/hapus/' . $penerimaan->no_terima) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-											</td>
+											<td><?= $barang->kode_barang ?></td>
+											<td><?= $barang->nama_barang ?></td>
+											<td><?= $barang->stok ?> <?= strtoupper($barang->satuan) ?></td>
+											<?php if ($this->session->login['role'] == 'admin'): ?>
+												<td>
+													<a href="<?= base_url('barang/ubah/' . $barang->kode_barang) ?>" class="btn btn-success btn-sm"><i class="fa fa-pen"></i></a>
+													<a onclick="return confirm('apakah anda yakin?')" href="<?= base_url('barang/hapus/' . $barang->kode_barang) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+												</td>
+											<?php endif ?>
 										</tr>
 									<?php endforeach ?>
 								</tbody>
