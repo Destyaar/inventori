@@ -10,7 +10,7 @@
 		<?php $this->load->view('partials/sidebar.php') ?>
 
 		<div id="content-wrapper" class="d-flex flex-column">
-			<div id="content" data-url="<?= base_url('penerimaan') ?>">
+			<div id="content" data-url="<?= base_url('pengeluaran') ?>">
 				<!-- load Topbar -->
 				<?php $this->load->view('partials/topbar.php') ?>
 
@@ -21,7 +21,7 @@
 					</div>
 					<div class="float-right">
 						
-						<a href="<?= base_url('penerimaan') ?>" class="btn btn-secondary btn-sm"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
+						<a href="<?= base_url('pengeluaran') ?>" class="btn btn-secondary btn-sm"><i class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
 					</div>
 				</div>
 				<hr>
@@ -41,25 +41,25 @@
 					</div>
 				<?php endif ?>
 				<div class="card shadow">
-					<div class="card-header"><strong><?= $title ?> - <?= $penerimaan->no_terima ?></strong></div>
+					<div class="card-header"><strong><?= $title ?> - <?= $pengeluaran->no_keluar ?></strong></div>
 					<div class="card-body">
 						<div class="row">
 							<div class="col-md-6">
 								<table class="table table-borderless">
 									<tr>
-										<td><strong>No Penerimaan</strong></td>
+										<td><strong>No Keluar</strong></td>
 										<td>:</td>
-										<td><?= $penerimaan->no_terima ?></td>
+										<td><?= $pengeluaran->no_keluar ?></td>
 									</tr>
 									<tr>
 										<td><strong>Nama Petugas</strong></td>
 										<td>:</td>
-										<td><?= $penerimaan->nama_petugas ?></td>
+										<td><?= $pengeluaran->nama_petugas ?></td>
 									</tr>
 									<tr>
-										<td><strong>Waktu Penerimaan</strong></td>
+										<td><strong>Waktu Keluar</strong></td>
 										<td>:</td>
-										<td><?= $penerimaan->tgl_terima ?> - <?= $penerimaan->jam_terima ?></td>
+										<td><?= $pengeluaran->tgl_keluar ?> - <?= $pengeluaran->jam_keluar ?></td>
 									</tr>
 								</table>
 							</div>
@@ -76,11 +76,11 @@
 										</tr>
 									</thead>
 									<tbody>
-										<?php foreach ($all_detail_terima as $detail_terima): ?>
+										<?php foreach ($all_detail_keluar as $detail_keluar): ?>
 											<tr>
 												<td><?= $no++ ?></td>
-												<td><?= $detail_terima->nama_barang ?></td>
-												<td><?= $detail_terima->jumlah ?> <?= strtoupper($detail_terima->satuan) ?></td>
+												<td><?= $detail_keluar->nama_barang ?></td>
+												<td><?= $detail_keluar->jumlah ?> <?= strtoupper($detail_keluar->satuan) ?></td>
 											</tr>
 										<?php endforeach ?>
 									</tbody>
