@@ -16,24 +16,24 @@
 		<div class="col-md-4">
 			<table class="table table-borderless">
 				<tr>
-					<td><strong>No keluar</strong></td>
+					<td><strong>No Terima</strong></td>
 					<td>:</td>
-					<td><?= $pengeluaran->no_keluar ?></td>
+					<td><?= $penerimaan->no_terima ?></td>
 				</tr>
 				<tr>
 					<td><strong>Nama Petugas</strong></td>
 					<td>:</td>
-					<td><?= $pengeluaran->nama_petugas ?></td>
+					<td><?= $penerimaan->nama_petugas ?></td>
 				</tr>
 				<tr>
-					<td><strong>Nama Customer</strong></td>
+					<td><strong>Nama Supplier</strong></td>
 					<td>:</td>
-					<td><?= $pengeluaran->nama_customer ?></td>
+					<td><?= $penerimaan->nama_supplier ?></td>
 				</tr>
 				<tr>
-					<td><strong>Waktu keluar</strong></td>
+					<td><strong>Waktu Terima</strong></td>
 					<td>:</td>
-					<td><?= $pengeluaran->tgl_keluar ?> - <?= $pengeluaran->jam_keluar ?></td>
+					<td><?= $penerimaan->tgl_terima ?> - <?= $penerimaan->jam_terima ?></td>
 				</tr>
 			</table>
 		</div>
@@ -50,11 +50,11 @@
 					</tr>
 				</thead>
 				<tbody>
-					<?php foreach ($all_detail_keluar as $detail_keluar): ?>
+					<?php foreach ($all_detail_terima as $detail_terima): ?>
 						<tr>
 							<td><?= $no++ ?></td>
-							<td><?= $detail_keluar->nama_barang ?></td>
-							<td><?= $detail_keluar->jumlah ?> <?= strtolower($detail_keluar->satuan) ?></td>
+							<td><?= $detail_terima->nama_barang ?></td>
+							<td><?= $detail_terima->jumlah ?> <?= strtolower($detail_terima->satuan) ?></td>
 						</tr>
 					<?php endforeach ?>
 				</tbody>
