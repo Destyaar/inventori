@@ -1,0 +1,2 @@
+# inventori
+gudang, penerimaan, pengeluaran
